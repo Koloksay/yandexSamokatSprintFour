@@ -51,11 +51,11 @@ public class CreateOrderWithHeadButtonTest {
     @Before
     public void setUp() {
 
-        System.setProperty("webdriver.gecko.driver", "C:\\browser_driver\\geckodriver.exe");
-        driver = new FirefoxDriver();
+        /*System.setProperty("webdriver.gecko.driver", "C:\\browser_driver\\geckodriver.exe");
+        driver = new FirefoxDriver();*/
 
-        /*System.setProperty("webdriver.chrome.driver", "C:\\browser_driver\\chromedriver.exe");
-        driver = new ChromeDriver();*/
+        System.setProperty("webdriver.chrome.driver", "C:\\browser_driver\\chromedriver.exe");
+        driver = new ChromeDriver();
 
         driver.get("https://qa-scooter.praktikum-services.ru/");
 
