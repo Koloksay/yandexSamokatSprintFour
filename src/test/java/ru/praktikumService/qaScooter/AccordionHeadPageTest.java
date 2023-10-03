@@ -51,12 +51,13 @@ public class AccordionHeadPageTest {
 
         wait = new WebDriverWait(driver, 10);
         driver.get("https://qa-scooter.praktikum-services.ru/");
+        HeadPage headPage = new HeadPage(driver);
+        headPage.clickToRccConfirmButton();
     }
 
     @Test
     public void testAccordionPanelText() {
         HeadPage headPage = new HeadPage(driver);
-
         // Прокручиваем до нужно элемента и кликаем на него
         headPage.scrollToAccordion(accordionHeading);
         headPage.clickAccordion(accordionHeading);

@@ -11,20 +11,23 @@ public class HeadPage {
     private WebDriver driver;
     private WebDriverWait wait;
     // кнопка "Заказать" в шапке страницы
-    private By orderButtonInHead = By.xpath("//*[@id='root']/div/div/div[1]/div[2]/button[1]");
-    private By orderButtonInMiddle = By.xpath("//*[@id='root']/div/div/div[4]/div[2]/div[5]/button");
+    private By orderInHeadButton = By.cssSelector("div.Header_Nav__AGCXC>.Button_Button__ra12g");
+    private By orderInMiddleButton = By.cssSelector("button.Button_Middle__1CSJM");
+    private By rccConfirmButton = By.id("rcc-confirm-button");
+
+
 
     public HeadPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, 10);
     }
 
-    public By getOrderButtonInHead() {
-        return orderButtonInHead;
+    public By getOrderInHeadButton() {
+        return orderInHeadButton;
     }
 
-    public By getOrderButtonInMiddle() {
-        return orderButtonInMiddle;
+    public By getOrderInMiddleButton() {
+        return orderInMiddleButton;
     }
 
     public void scrollToAccordion(String accordionHeading) {
@@ -41,6 +44,12 @@ public class HeadPage {
         driver.findElement(orderButton).click();
     }
 
+    public void clickToRccConfirmButton() {
+        WebElement element = driver.findElement(rccConfirmButton);
+        if (element != null && element.isDisplayed()) {
+            element.click();
+        }
+    }
 
     public void clickAccordion(String accordionHeading) {
         WebElement accordionElement = driver.findElement(By.id(accordionHeading));

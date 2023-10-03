@@ -5,6 +5,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.praktikumService.qaScooter.OrderStepThreePage;
 import ru.praktikumService.qaScooter.HeadPage;
@@ -18,7 +19,7 @@ import java.util.Collection;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(Parameterized.class)
-public class CreateOrderWithHeadButtonTest {
+public class CreateOrderTest {
 
     private WebDriver driver;
     private String name;
@@ -30,7 +31,7 @@ public class CreateOrderWithHeadButtonTest {
     private String duration;
 
 
-    public CreateOrderWithHeadButtonTest(String name, String family, String address, String metro, String phoneNumber, String color, String duration) {
+    public CreateOrderTest(String name, String family, String address, String metro, String phoneNumber, String color, String duration) {
         this.name = name;
         this.family = family;
         this.address = address;
@@ -58,15 +59,38 @@ public class CreateOrderWithHeadButtonTest {
         driver = new ChromeDriver();
 
         driver.get("https://qa-scooter.praktikum-services.ru/");
-
         HeadPage headPage = new HeadPage(driver);
-        By orderButton = headPage.getOrderButtonInHead();
-        headPage.scrollToOrderButton(orderButton);
-        headPage.clickToOrderButton(orderButton);
+        headPage.clickToRccConfirmButton();
     }
 
     @Test
-    public void testOrderProcess() {
+    public void testOrderProcessWithOrderButtonInHead() {
+        HeadPage headPage = new HeadPage(driver);
+        By orderButton = headPage.getOrderInHeadButton();
+        headPage.scrollToOrderButton(orderButton);
+        headPage.clickToOrderButton(orderButton);
+
+        OrderStepOnePage orderStepOnePage = new OrderStepOnePage(driver);
+        orderStepOnePage.SetForm(name, family, address, metro, phoneNumber);
+
+        OrderStepTwoPage orderStepTwoPage = new OrderStepTwoPage(driver);
+        orderStepTwoPage.setFormOrderPageTwo(color, duration);
+
+        OrderStepThreePage orderStepThreePage = new OrderStepThreePage(driver);
+        orderStepThreePage.clickToYesButton();
+
+        OrderIsCreatedPage orderIsCreatedPage = new OrderIsCreatedPage(driver);
+        // Проверка, что открылась страница с заголовком "Заказ оформлен"
+        assertTrue("Ожидается появления окна с заголовком 'Заказ оформлен'", orderIsCreatedPage.isPopUpCreateOrderDisplayed());
+    }
+
+    @Test
+    public void testOrderProcessWithOrderButtonInMiddle() {
+        HeadPage headPage = new HeadPage(driver);
+        By orderButton = headPage.getOrderInMiddleButton();
+        headPage.scrollToOrderButton(orderButton);
+        headPage.clickToOrderButton(orderButton);
+
         OrderStepOnePage orderStepOnePage = new OrderStepOnePage(driver);
         orderStepOnePage.SetForm(name, family, address, metro, phoneNumber);
 
