@@ -10,7 +10,7 @@ public class OrderStepThreePage {
 
     private WebDriver driver;
     private WebDriverWait wait;
-    private By buttonYes = By.xpath("//*[@id='root']/div/div[2]/div[5]/div[2]/button[2]");
+    private By buttonYes = By.xpath("//button[text()='Да']");
 
     public OrderStepThreePage(WebDriver driver){
         this.driver=driver;
