@@ -1,3 +1,5 @@
+package ru.praktikum.service.qascooter;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -6,12 +8,7 @@ import org.junit.runners.Parameterized;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import ru.praktikumService.qaScooter.OrderStepThreePage;
-import ru.praktikumService.qaScooter.HeadPage;
-import ru.praktikumService.qaScooter.OrderStepOnePage;
-import ru.praktikumService.qaScooter.OrderStepTwoPage;
-import ru.praktikumService.qaScooter.OrderIsCreatedPage;
+import ru.praktikum.service.qascooter.po.*;
 
 import java.util.Arrays;
 import java.util.Collection;

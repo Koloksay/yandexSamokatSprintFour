@@ -1,4 +1,4 @@
-package ru.praktikumService.qaScooter;
+package ru.praktikum.service.qascooter;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
+import ru.praktikum.service.qascooter.po.HeadPage;
+
 import java.util.Arrays;
 import java.util.Collection;
 
