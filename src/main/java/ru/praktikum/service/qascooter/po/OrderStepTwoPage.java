@@ -10,14 +10,9 @@ public class OrderStepTwoPage {
     private WebDriver driver;
     private WebDriverWait wait;
     private By inputDate = By.cssSelector("input[placeholder='* Когда привезти самокат']");
-
     // поле для ввода количества суток аренды class = "Dropdown-arrow"
-    private By numberOfDaysArrow = By.className("Dropdown-arrow");
-
-    // меню с вариантом выбора количества суток class = "Dropdown-menu"
-    private By numberOfDaysMenu = By.className("Dropdown-menu");
-
-    private By orderButton = By.xpath("//*[@id='root']/div/div[2]/div[3]/button[2]");
+    private By numberOfDaysArrow = By.className("Dropdown-control");
+    private By orderButton = By.cssSelector("div.Order_Buttons__1xGrp>button.Button_Middle__1CSJM:nth-child(2)");
 
     public OrderStepTwoPage(WebDriver driver) {
         this.driver = driver;
@@ -39,7 +34,7 @@ public class OrderStepTwoPage {
 
     // выбор количества дней аренды
     public void selectRentDuration(String duration) {
-        driver.findElement(By.className("Dropdown-control")).click();
+        driver.findElement(numberOfDaysArrow).click();
         driver.findElement(By.xpath("//div[@class='Dropdown-option' and text()='" + duration + "']")).click();
     }
 
